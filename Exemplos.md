@@ -8,3 +8,7 @@
 
 ## consultar um servidor NTP usando C# (para obter data atual mais precisa)
 - https://stackoverflow.com/a/12150289
+
+## Ip de tunnel proxy 
+- https://stackoverflow.com/questions/11452938/how-to-use-http-x-forwarded-for-properly
+- propriedade servidor: HTTP_X_FORWARDED_FOR
