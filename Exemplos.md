@@ -8,7 +8,7 @@
 
 ## consultar um servidor NTP usando C# (para obter data atual mais precisa)
 - https://stackoverflow.com/a/12150289
-- [<script src="https://gist.github.com/rcoliveira2016/aefcd7337827d7b056ade669a79168cc.js"></script>](https://gist.github.com/rcoliveira2016/aefcd7337827d7b056ade669a79168cc)
+- (https://gist.github.com/rcoliveira2016/aefcd7337827d7b056ade669a79168cc)](https://gist.github.com/rcoliveira2016/aefcd7337827d7b056ade669a79168cc)
 
 ## Ip de tunnel proxy 
 - https://stackoverflow.com/questions/11452938/how-to-use-http-x-forwarded-for-properly
