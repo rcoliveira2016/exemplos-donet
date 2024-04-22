@@ -1,6 +1,6 @@
 # Exemplos
 
-## biblioteca para identificar dispositivo aprtir de uma request:
+## biblioteca para identificar dispositivo aprtir de uma request(User-Agen):
 - https://github.com/totpero/DeviceDetector.NET
 - https://github.com/ua-parser/uap-csharp
 - https://github.com/DannyBoyNg/UserAgentService/
