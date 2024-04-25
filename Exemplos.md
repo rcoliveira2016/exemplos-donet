@@ -23,3 +23,6 @@
 # provedor tunnel proxy
 - https://learn.microsoft.com/pt-br/azure/developer/dev-tunnels/get-started?tabs=windows
 - https://ngrok.com/
+
+# redis pub/sub
+- https://evertonzauso.medium.com/redis-mensageria-utilizando-net-core-eeb7fc59cbc2
