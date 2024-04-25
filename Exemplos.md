@@ -5,6 +5,8 @@
 - https://github.com/ua-parser/uap-csharp
 - https://github.com/DannyBoyNg/UserAgentService/
 - https://github.com/mycsharp/HttpUserAgentParser
+- https://learn.microsoft.com/en-us/microsoft-edge/web-platform/how-to-detect-win11
+- obs: User-Agent é legado, o remonedado é usar os User-Agent Client Hints (https://wicg.github.io/ua-client-hints/)
 
 ## consultar um servidor NTP usando C# (para obter data atual mais precisa)
 - https://stackoverflow.com/a/12150289
