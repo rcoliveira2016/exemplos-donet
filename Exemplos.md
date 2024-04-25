@@ -19,3 +19,7 @@
 
 # implementar totp
 - https://github.com/kspearrin/Otp.NET
+
+# provedor tunnel proxy
+- https://learn.microsoft.com/pt-br/azure/developer/dev-tunnels/get-started?tabs=windows
+- https://ngrok.com/
