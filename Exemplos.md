@@ -26,3 +26,5 @@
 
 # redis pub/sub
 - https://evertonzauso.medium.com/redis-mensageria-utilizando-net-core-eeb7fc59cbc2
+- https://stackexchange.github.io/StackExchange.Redis/Basics#using-redis-pubsub
+
