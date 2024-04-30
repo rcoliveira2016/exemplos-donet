@@ -17,14 +17,16 @@
 - https://stackoverflow.com/questions/11452938/how-to-use-http-x-forwarded-for-properly
 - propriedade servidor: HTTP_X_FORWARDED_FOR
 
-# implementar totp
+## implementar totp
 - https://github.com/kspearrin/Otp.NET
 
-# provedor tunnel proxy
+## provedor tunnel proxy
 - https://learn.microsoft.com/pt-br/azure/developer/dev-tunnels/get-started?tabs=windows
 - https://ngrok.com/
 
-# redis pub/sub
+## redis pub/sub
 - https://evertonzauso.medium.com/redis-mensageria-utilizando-net-core-eeb7fc59cbc2
 - https://stackexchange.github.io/StackExchange.Redis/Basics#using-redis-pubsub
 
+## Manipular ConfigurationManager
+- https://yizeng.me/2013/08/31/update-appsettings-and-custom-configuration-sections-in-appconfig-at-runtime/
