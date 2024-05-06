@@ -1,5 +1,8 @@
 # Exemplos
 
+## search engine ou full text
+- https://github.com/meilisearch/meilisearch-dotnet
+
 ## biblioteca para identificar dispositivo aprtir de uma request(User-Agen):
 - https://github.com/totpero/DeviceDetector.NET
 - https://github.com/ua-parser/uap-csharp
