@@ -1,5 +1,8 @@
 # Exemplos
 
+## GetHashCode
+- https://andrewlock.net/why-is-string-gethashcode-different-each-time-i-run-my-program-in-net-core/
+
 ## search engine ou full text
 - https://github.com/meilisearch/meilisearch-dotnet
 - https://sematext.com/blog/elasticsearch-opensearch-solr-alternatives/
