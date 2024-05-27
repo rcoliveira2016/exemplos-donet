@@ -51,7 +51,7 @@ public class SeparadorCamandoSQLTest
             END;
             INSERT INTO users (name, age) VALUES ('John', 30);
             UPDATE users SET age = 31 WHERE name = 'John';
-            DELETE FROM users WHERE name = 'John';
+            DELETE FROM users WHERE name = 'John'
         ";
 
         List<string> commands = new SeparadorCamandoSQL(input).Split();
@@ -83,6 +83,35 @@ public class SeparadorCamandoSQLTest
 
         List<string> commands = new SeparadorCamandoSQL(string.Join(";", input)).Split();
         Assert.AreEqual(5, commands.Count);
+        foreach (var command in commands)
+        {
+            Assert.IsTrue(input.Contains(command), $"{command}");
+        }
+    }
+
+    [TestMethod]
+    public void SeparComProc()
+    {
+        var input = new string[] {@"CREATE OR REPLACE PROCEDURE AddEmployee (
+    p_first_name IN VARCHAR2,
+    p_last_name IN VARCHAR2,
+    p_email IN VARCHAR2,
+    p_hire_date IN DATE
+) AS
+BEGIN
+    INSERT INTO employees (first_name, last_name, email, hire_date)
+    VALUES (p_first_name, p_last_name, p_email, p_hire_date);
+INSERT INTO employees (first_name, last_name, email, hire_date)
+    VALUES (p_first_name, p_last_name, p_email, p_hire_date);
+INSERT INTO employees (first_name, last_name, email, hire_date)
+    VALUES (p_first_name, p_last_name, p_email, p_hire_date);
+END",
+            "INSERT INTO users (name, age) VALUES ('John', 30)",
+            "UPDATE users SET age = 31 WHERE name = 'John'",
+            "DELETE FROM users WHERE name = 'John'" };
+
+        List<string> commands = new SeparadorCamandoSQL(string.Join(";", input)).Split();
+        Assert.AreEqual(4, commands.Count);
         foreach (var command in commands)
         {
             Assert.IsTrue(input.Contains(command), $"{command}");

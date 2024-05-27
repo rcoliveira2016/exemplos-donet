@@ -97,15 +97,17 @@ public class SeparadorCamandoSQL
             return true;
         }
 
-        if (IsKeyword(SqlCommand, indexLoopCommand, SQLKeywords.CREATE) && TermCraetWithStructIgnoreSeparator(ref indexLoopCommand))
-        {
+        if (IsKeyword(SqlCommand, indexLoopCommand, SQLKeywords.CREATE) 
+            && (TermCreateWithStructIgnoreSeparator(SQLKeywords.PACKAGE, ref indexLoopCommand)
+            || TermCreateWithStructIgnoreSeparator(SQLKeywords.PROCEDURE, ref indexLoopCommand)
+            || TermCreateWithStructIgnoreSeparator(SQLKeywords.FUNCTION, ref indexLoopCommand)))
             return true;
-        }
+
 
         return false;
     }
 
-    private bool TermCraetWithStructIgnoreSeparator(ref int indexLoopCommand)
+    private bool TermCreateWithStructIgnoreSeparator(string nameStructure, ref int indexLoopCommand)
     {
         var indexAtual = indexLoopCommand+ SQLKeywords.CREATE.Length;
         if(!TryNextKeyword(SqlCommand, indexAtual, out var indexNextKeyword))
@@ -113,7 +115,7 @@ public class SeparadorCamandoSQL
             return false;
         }
 
-        if (IsKeyword(SqlCommand, indexNextKeyword, SQLKeywords.PACKAGE))
+        if (IsKeyword(SqlCommand, indexNextKeyword, nameStructure))
         {
             NestedBlockLevel++;
             var tamnhoString = indexNextKeyword - indexAtual + SQLKeywords.PACKAGE.Length;
@@ -134,10 +136,10 @@ public class SeparadorCamandoSQL
         if(!TryNextKeyword(SqlCommand, indexNextKeywordAux + SQLKeywords.REPLACE.Length, out indexNextKeywordAux))
             return false;
 
-        if (IsKeyword(SqlCommand, indexNextKeywordAux, SQLKeywords.PACKAGE))
+        if (IsKeyword(SqlCommand, indexNextKeywordAux, nameStructure))
         {
             NestedBlockLevel++;
-            var tamnhoString = indexNextKeywordAux - indexLoopCommand + SQLKeywords.PACKAGE.Length;
+            var tamnhoString = indexNextKeywordAux - indexLoopCommand + nameStructure.Length;
             CurrentCommand.Append(SqlCommand.Substring(indexLoopCommand, tamnhoString));
             indexLoopCommand += tamnhoString - 1;
             InsideDeclareBlock = true;
