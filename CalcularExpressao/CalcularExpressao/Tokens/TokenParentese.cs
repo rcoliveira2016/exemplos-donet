@@ -1,16 +1,22 @@
-﻿namespace CalcularExpressao.Tokens;
+﻿
+namespace CalcularExpressao.Tokens;
 
 public class TokenParentese : TokenBase
 {
     public override eTokenBase Tipo => eTokenBase.Parentese;
+    public eTokenParentese TipoParentese { get; set; }
+    internal static TokenParentese Create(eTokenParentese tipo) => new()
+    {
+        TipoParentese = tipo
+    };
 
     public override string GetText()
     {
-        return ((char)Tipo).ToString();
+        return ((char)TipoParentese).ToString();
     }
 }
 public enum eTokenParentese
 {
-    abre='(',
-    fecha=')'
+    Abre='(',
+    Fecha=')'
 }

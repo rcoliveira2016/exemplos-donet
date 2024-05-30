@@ -8,7 +8,7 @@ public abstract class TokenBase
 
     public TokenBase AddFilho(TokenBase token)
     {
-        token.Pai = token;
+        token.Pai = this;
         Filhos.Add(token);
         return token;
     }

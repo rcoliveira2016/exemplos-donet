@@ -1,4 +1,6 @@
-﻿namespace CalcularExpressao.Tokens;
+﻿using System.Text;
+
+namespace CalcularExpressao.Tokens;
 
 public class TokenRoot : TokenBase
 {
@@ -15,6 +17,18 @@ public class TokenRoot : TokenBase
 
     public string ToStringTree()
     {
-        throw new NotImplementedException();
+        var retorno = new StringBuilder();
+        retorno.Append(ToStringTree(this));
+        return retorno.ToString();
+    }
+
+    private string ToStringTree(TokenBase tokens)
+    {
+        var retorno = new StringBuilder();
+        retorno.Append(tokens.GetText());
+        foreach (var token in tokens.Filhos) {
+            retorno.Append(ToStringTree(token));
+        }
+        return retorno.ToString();
     }
 }
