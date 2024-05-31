@@ -69,6 +69,9 @@ public class ValidarSintaxExpressao
             if (anterior.Tipo == eTokenBase.Parentese && (anterior as TokenParentese)!.TipoParentese != eTokenParentese.Abre)
                 DispararExcecaoSintax("o parenteses não foi aberto");
 
+            if (!anterior.Filhos.Any())
+                DispararExcecaoSintax("o expreção entre paraentese esta vazia");
+
             ValidarFilhoToken(anterior!);
         }
     }
