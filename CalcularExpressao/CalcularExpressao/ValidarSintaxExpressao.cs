@@ -29,7 +29,7 @@ public class ValidarSintaxExpressao
             switch (atual.Tipo)
             {
                 case eTokenBase.Operacao:
-                    ValidarTokenOperacao(atual, proximo, anterior);
+                    ValidarTokenOperacao((atual as TokenOperacao)!, proximo, anterior);
                     break;
                 case eTokenBase.Numeros:
                     ValidarTokenNumeros(atual, proximo, anterior);
@@ -82,19 +82,24 @@ public class ValidarSintaxExpressao
             DispararExcecaoSintax("numeros não podem esta juntas");
     }
 
-    private void ValidarTokenOperacao(TokenBase atual, TokenBase? proximo, TokenBase? anterior)
+    private void ValidarTokenOperacao(TokenOperacao atual, TokenBase? proximo, TokenBase? anterior)
     {
         if (proximo == null && anterior == null)
-            DispararExcecaoSintax("Uma operação não pode ser isola");
+            DispararExcecaoSintaxOperacao("Uma operação não pode ser isola", atual.TipoOperacao);
 
         if (proximo != null && proximo.Tipo == eTokenBase.Operacao || anterior != null && anterior.Tipo == eTokenBase.Operacao)
-            DispararExcecaoSintax("operação não podem esta juntas");
+            DispararExcecaoSintaxOperacao("operação não podem esta juntas", atual.TipoOperacao);
 
         if (proximo == null)
-            DispararExcecaoSintax("operação não pode ficar em uma extremidade");
+            DispararExcecaoSintaxOperacao("operação não pode ficar em uma extremidade", atual.TipoOperacao);
 
-        if (anterior == null && (atual as TokenOperacao)!.TipoOperacao != eTokenOperacao.Subtrair && proximo?.Tipo == eTokenBase.Numeros)
-            DispararExcecaoSintax("apenas a operação de subtrarir pode esta a esquerda de um numero no inicio da expressao");
+        if (anterior == null && atual.TipoOperacao != eTokenOperacao.Subtrair && proximo?.Tipo == eTokenBase.Numeros)
+            DispararExcecaoSintaxOperacao("apenas a operação de subtrarir pode esta a esquerda de um numero no inicio da expressao", atual.TipoOperacao);
+    }
+
+    private void DispararExcecaoSintaxOperacao(string mensagem, eTokenOperacao operacao)
+    {
+        throw new OperacaoSintaxExcecao(mensagem, operacao);
     }
 
     private void DispararExcecaoSintax(string mensagem)
